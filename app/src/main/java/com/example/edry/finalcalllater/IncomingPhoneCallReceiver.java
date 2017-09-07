@@ -14,7 +14,7 @@ public class IncomingPhoneCallReceiver extends BroadcastReceiver {
 
     public void onReceive(Context context, Intent intent) {
 
-        System.out.println("Flow: IncomingPhoneCallReceiver : onReceive  ");
+        //System.out.println("Flow: IncomingPhoneCallReceiver : onReceive  ");
 
         PhoneState = intent.getExtras().getString(TelephonyManager.EXTRA_STATE);
 
@@ -57,7 +57,7 @@ public class IncomingPhoneCallReceiver extends BroadcastReceiver {
 
         }
 
-        System.out.println("Flow: IncomingPhoneCallReceiver : case " + PhoneState +" " + adiitionalPhoneNumber);
+        //System.out.println("Flow: IncomingPhoneCallReceiver : case " + PhoneState +" " + adiitionalPhoneNumber);
 
 
     }

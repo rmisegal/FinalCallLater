@@ -112,9 +112,7 @@ public class OnPhoneCallService extends Service {
                 {
                     case "INCOMING":
 
-                        System.out.println("Flow: case result : INCOMING"+ EXTRA_NUMBER.equals(PeerPhoneNumber) +" "+ EXTRA_CODE.substring(0,3) + " " + PersonalCode );
-
-                            if(EXTRA_NUMBER.equals(PeerPhoneNumber) && EXTRA_CODE.equals(PersonalCode))
+                            if(IsEqual(EXTRA_NUMBER,PeerPhoneNumber) && EXTRA_CODE.equals(PersonalCode))
                             {
                                 MyPhoneState SoundUp = new MyPhoneState();
 
@@ -127,11 +125,14 @@ public class OnPhoneCallService extends Service {
 
                         System.out.println("Flow: case result : INCOMING");
 
+                        new EmergencyWindow(getApplicationContext(), EXTRA_NUMBER , EXTRA_CODE);
+
                         SendSms(EXTRA_CODE , EXTRA_NUMBER);
 
                         break;
 
                     default:
+
                         System.out.println("Flow: case result : default");
 
                     break;
@@ -181,6 +182,14 @@ public class OnPhoneCallService extends Service {
         return Code;
     }
 
+    private boolean IsEqual(String p1, String p2)
+    {
+        System.out.println("Flow: " + p1 + p1.substring(1)+p1.equals(3) +p2 +p2.substring(1) + p2.substring(3));
+
+
+        return true;
+
+    }
 
 
 

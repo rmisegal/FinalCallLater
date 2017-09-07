@@ -25,7 +25,7 @@ public class RingtonePlayerService extends Service {
 
         System.out.println("Flow: RingtonePlayerService : onStartCommand ") ;
 
-        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         this.ringtone = RingtoneManager.getRingtone(this, notification);
 
