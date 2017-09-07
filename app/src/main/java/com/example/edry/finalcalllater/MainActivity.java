@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
           //  notificationManager.setInterruptionFilter(NotificationManager.INTERRUPTION_FILTER_NONE);
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N && !notificationManager.isNotificationPolicyAccessGranted()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !notificationManager.isNotificationPolicyAccessGranted()) {
 
                 Intent intent = new Intent(android.provider.Settings.ACTION_NOTIFICATION_POLICY_ACCESS_SETTINGS);
 

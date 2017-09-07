@@ -50,7 +50,8 @@
         <service
             android:name=".SleepModeService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            android:priority="1000"/>
 
         <receiver
             android:name=".IncomingPhoneCallReceiver"
@@ -66,6 +67,7 @@
             android:name=".OnPhoneCallService"
             android:enabled="true"
             android:exported="true"></service>
+
         <service android:name=".RingtonePlayerService" android:exported="true" android:enabled="true"/>
     </application>
 

@@ -9,6 +9,8 @@ import android.telephony.PhoneStateListener;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
 
+import java.util.Random;
+
 public class OnPhoneCallService extends Service {
 
 
@@ -182,17 +184,34 @@ public class OnPhoneCallService extends Service {
 
     private String GenerateRandomCode()
     {
-        String Code= "1234";
+        Random rand = new Random();
+
+        int  n = rand.nextInt(10000) + 10000;
+
+        String Code = String.valueOf(n).substring(1);
+
+        System.out.println("Flow: Code" + Code);
 
         return Code;
     }
 
     private boolean IsEqual(String p1, String p2)
     {
-        System.out.println("Flow: " + p1 + p1.substring(1)+p1.substring(3) +p2 +p2.substring(1) + p2.substring(3));
+
+            if(p1.length()==13)
+                p1 = p1.substring(4);
+            else
+                p1 = p1.substring(1);
+
+        if(p2.length()==11)
+            p2 = p2.substring(1);
+        else
+            p2 = p2.substring(4);
+
+        System.out.println("Flow: " + p1 +"  " +p2);
 
 
-        return true;
+        return p1.equals(p2);
 
     }
 

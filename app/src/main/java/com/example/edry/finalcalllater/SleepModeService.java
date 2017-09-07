@@ -21,7 +21,7 @@ public class SleepModeService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId)
     {
 
-        System.out.println("Flow: LunchSleeperService : sleep till " + (long)intent.getLongExtra("PERIOD",0)) ;
+        System.out.println("Flow: SleepModeService : sleep till " + (long)intent.getLongExtra("PERIOD",0)) ;
 
         Caller_Receiver = new IncomingPhoneCallReceiver();
 
@@ -37,7 +37,7 @@ public class SleepModeService extends Service {
 
     public void onDestroy()
     {
-        System.out.println("Flow: LunchSleeperService : onDestroy ") ;
+        System.out.println("Flow: SleepModeService : onDestroy ") ;
 
         unregisterReceiver(Caller_Receiver);
 
