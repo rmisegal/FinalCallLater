@@ -23,6 +23,9 @@ public class MyPhoneState extends PhoneStateListener{
 
         AudioManager MyVolume =  (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
 
+        System.out.println("Flow: step 3" );
+
+
         switch(state)
         {
             case 0:
@@ -48,6 +51,8 @@ public class MyPhoneState extends PhoneStateListener{
 
                    //MyVolume.setStreamVolume(AudioManager.STREAM_RING, MyVolume.getStreamMaxVolume(AudioManager.STREAM_RING), 0);
                     //MyVolume.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+
+                    System.out.println("Flow: step 4" );
 
                     MyVolume.setStreamVolume(AudioManager.STREAM_NOTIFICATION,MyVolume.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION), 0);
 

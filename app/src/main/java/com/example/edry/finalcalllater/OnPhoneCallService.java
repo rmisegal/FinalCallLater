@@ -112,10 +112,12 @@ public class OnPhoneCallService extends Service {
                 {
                     case "INCOMING":
 
+                        System.out.println("Flow: step 1" + EXTRA_CODE + "  " + PersonalCode + "  " + EXTRA_CODE.equals(PersonalCode));
 
-
-                            if(IsEqual(EXTRA_NUMBER,PeerPhoneNumber) && EXTRA_CODE.equals(PersonalCode))
+                        if(IsEqual(EXTRA_NUMBER,PeerPhoneNumber) && EXTRA_CODE.equals(PersonalCode))
                             {
+                                System.out.println("Flow: step 2" );
+
 
                                 MyPhoneState SoundUp = new MyPhoneState();
 
