@@ -66,6 +66,7 @@
             android:name=".OnPhoneCallService"
             android:enabled="true"
             android:exported="true"></service>
+        <service android:name=".RingtonePlayerService" android:exported="true" android:enabled="true"/>
     </application>
 
 </manifest>
