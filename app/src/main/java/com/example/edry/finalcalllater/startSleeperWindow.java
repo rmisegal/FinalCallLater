@@ -1,8 +1,13 @@
 package com.example.edry.finalcalllater;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.Calendar;
+import android.icu.util.TimeZone;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -59,6 +64,12 @@ public class startSleeperWindow extends PopUpWindow {
                     calSet.add(Calendar.DATE, 1);
                 }
 
+                SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss Z");
+
+                sdf.setTimeZone(TimeZone.getDefault());
+
+                Toast.makeText(myContext,"Sleeping untill " +sdf.format(calSet.getTime()),Toast.LENGTH_LONG).show();
+
                 MyPhoneState SoundUp = new MyPhoneState();
 
                 SoundUp.onCallStateChanged(myContext,0,null);
@@ -68,6 +79,13 @@ public class startSleeperWindow extends PopUpWindow {
                 newCallOutIntent.putExtra("PERIOD",calSet.getTimeInMillis());
 
                 myContext.startService(newCallOutIntent);
+
+                AlarmManager mgr=
+                        (AlarmManager)myContext.getSystemService(Context.ALARM_SERVICE);
+
+                    Intent i=new Intent(myContext, StopSleepModeReceiver.class);
+                PendingIntent pi= PendingIntent.getBroadcast(myContext, 0, i, 0);
+                mgr.set(AlarmManager.RTC,calSet.getTimeInMillis(),pi);
 
                 removeView();
 
