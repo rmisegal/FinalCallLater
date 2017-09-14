@@ -9,14 +9,16 @@ import android.util.Log;
 
 public class AudioStateReceiver extends BroadcastReceiver {
 
+    private static int LastRingerMode = AudioManager.RINGER_MODE_VIBRATE;
+
     @Override
     public void onReceive(Context context, Intent intent) {
 
         Log.i("MyTag", "Flow: AudioStateReceiver : onReceive  ");
 
-        AudioManager MyVolume = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
+        AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
 
-        switch (MyVolume.getRingerMode()) {
+        switch (audioManager.getRingerMode()) {
 
             case AudioManager.RINGER_MODE_SILENT:
 
@@ -28,8 +30,8 @@ public class AudioStateReceiver extends BroadcastReceiver {
 
             case AudioManager.RINGER_MODE_NORMAL:
 
-                if (isMyServiceRunning(SleepModeService.class, context) && MyVolume.getStreamVolume(AudioManager.STREAM_RING) >= 1) {
-                    StopSleeperWindow Slper = new StopSleeperWindow(context);
+                if (isMyServiceRunning(SleepModeService.class, context) && audioManager.getStreamVolume(AudioManager.STREAM_RING) >= 1) {
+                    StopSleeperWindow Slper = new StopSleeperWindow(context, LastRingerMode);
                 }
 
                 break;
@@ -40,13 +42,11 @@ public class AudioStateReceiver extends BroadcastReceiver {
                 }
                 break;
 
-
             default:
-
                 break;
-
-
         }
+
+        LastRingerMode = audioManager.getRingerMode();
     }
 
     private boolean isMyServiceRunning(Class<?> serviceClass, Context context) {

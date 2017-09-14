@@ -15,14 +15,15 @@ import static com.example.edry.finalcalllater.Utils.cancelSleepAlarm;
 
 public class StopSleeperWindow extends PopUpWindow {
 
-
     Button KeepRemainingButton;
-
     Button ExitButton;
 
+    int lastRingerMode;
 
-    public StopSleeperWindow(Context myContext) {
+
+    public StopSleeperWindow(Context myContext, int lastRingerMode) {
         super(myContext);
+        this.lastRingerMode = lastRingerMode;
     }
 
     @Override
@@ -43,7 +44,7 @@ public class StopSleeperWindow extends PopUpWindow {
             @Override
             public void onClick(View v) {
                 AudioManager am = (AudioManager)myContext.getSystemService(Context.AUDIO_SERVICE);
-                am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+                am.setRingerMode(lastRingerMode);
                 removeView();
             }
         });
