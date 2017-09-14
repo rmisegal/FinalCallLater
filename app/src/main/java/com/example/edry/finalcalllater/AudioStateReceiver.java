@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.util.Log;
 
-import static com.example.edry.finalcalllater.Utils.cancelSleepAlarm;
-
 public class AudioStateReceiver extends BroadcastReceiver {
 
     @Override
@@ -30,9 +28,8 @@ public class AudioStateReceiver extends BroadcastReceiver {
 
             case AudioManager.RINGER_MODE_NORMAL:
 
-                if (isMyServiceRunning(SleepModeService.class, context) && MyVolume.getStreamVolume(AudioManager.STREAM_RING) == 1) {
+                if (isMyServiceRunning(SleepModeService.class, context) && MyVolume.getStreamVolume(AudioManager.STREAM_RING) >= 1) {
                     StopSleeperWindow Slper = new StopSleeperWindow(context);
-                    cancelSleepAlarm(context);
                 }
 
                 break;

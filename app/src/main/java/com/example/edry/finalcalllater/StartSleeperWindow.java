@@ -42,7 +42,7 @@ public class StartSleeperWindow extends PopUpWindow {
 
         timePicker = (TimePicker) floatyView.findViewById(R.id.simpleTimePicker);
 
-        timePicker.setIs24HourView(true);
+        timePicker.setIs24HourView(false);
 
         confirm.setOnClickListener(new View.OnClickListener() {
 

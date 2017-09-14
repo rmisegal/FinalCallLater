@@ -2,9 +2,12 @@ package com.example.edry.finalcalllater;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+
+import static com.example.edry.finalcalllater.Utils.cancelSleepAlarm;
 
 /**
  * Created by edry on 06/09/2017.
@@ -39,6 +42,8 @@ public class StopSleeperWindow extends PopUpWindow {
         KeepRemainingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AudioManager am = (AudioManager)myContext.getSystemService(Context.AUDIO_SERVICE);
+                am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                 removeView();
             }
         });
@@ -46,13 +51,9 @@ public class StopSleeperWindow extends PopUpWindow {
         ExitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                System.out.println("Flow: StopSleeperService : sleep ");
-
                 Intent newCallOutIntent = new Intent(myContext, SleepModeService.class);
-
                 myContext.stopService(newCallOutIntent);
-
+                cancelSleepAlarm(myContext);
                 removeView();
             }
         });
