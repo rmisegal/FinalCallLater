@@ -49,12 +49,12 @@ public class MyPhoneState extends PhoneStateListener{
             case 1:
                 try {
 
-                   //MyVolume.setStreamVolume(AudioManager.STREAM_RING, MyVolume.getStreamMaxVolume(AudioManager.STREAM_RING), 0);
-                    //MyVolume.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                   MyVolume.setStreamVolume(AudioManager.STREAM_RING, MyVolume.getStreamMaxVolume(AudioManager.STREAM_RING), 0);
+                    MyVolume.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
 
                     System.out.println("Flow: step 4" );
 
-                    MyVolume.setStreamVolume(AudioManager.STREAM_NOTIFICATION,MyVolume.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION), 0);
+                    //MyVolume.setStreamVolume(AudioManager.STREAM_NOTIFICATION,MyVolume.getStreamMaxVolume(AudioManager.STREAM_NOTIFICATION), 0);
 
                    Intent ringerServic = new Intent(context,RingtonePlayerService.class);
 
@@ -67,22 +67,6 @@ public class MyPhoneState extends PhoneStateListener{
                     Toast.makeText(context,number,Toast.LENGTH_LONG).show();
 
                 }
-
-
-
-
-
-                break;
-            case 4:
-
-                try {
-                    //MyVolume.setStreamVolume(AudioManager.STREAM_RING, 0, 0);
-
-                }
-                catch (Exception e) {
-                    e.printStackTrace();
-                }
-
                 break;
             case 3:
 
@@ -97,6 +81,18 @@ public class MyPhoneState extends PhoneStateListener{
 
 
                 break;
+            case 4:
+
+                try {
+                    MyVolume.setStreamVolume(AudioManager.STREAM_RING, 0, 0);
+
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                break;
+
             default:
                 System.out.println("defual");
                 break;
