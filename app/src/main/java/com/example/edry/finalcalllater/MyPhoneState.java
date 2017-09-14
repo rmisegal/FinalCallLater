@@ -16,7 +16,6 @@ public class MyPhoneState extends PhoneStateListener{
     public enum Cases {
         INCOMING_CALL , IDLE
     }
-    //hghghjghjghjghj
 
     public void onCallStateChanged(Context context, int state, String number)
     {
@@ -51,6 +50,9 @@ public class MyPhoneState extends PhoneStateListener{
 
                     //MyVolume.setStreamVolume(AudioManager.STREAM_RING, MyVolume.getStreamMaxVolume(AudioManager.STREAM_RING), 0);
                     //MyVolume.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+
+                    MyVolume.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+                    MyVolume.setStreamVolume(AudioManager.STREAM_RING, MyVolume.getStreamMaxVolume(AudioManager.STREAM_RING), AudioManager.FLAG_SHOW_UI);
 
                     System.out.println("Flow: step 4" );
 
@@ -103,7 +105,4 @@ public class MyPhoneState extends PhoneStateListener{
         }
 
     }
-
-
-
 }
