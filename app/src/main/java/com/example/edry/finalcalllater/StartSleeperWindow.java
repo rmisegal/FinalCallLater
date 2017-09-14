@@ -54,7 +54,6 @@ public class StartSleeperWindow extends PopUpWindow {
                 int hoursDiff = timePicker.getHour() - calNow.get(Calendar.HOUR_OF_DAY);
                 int minuteDiff = timePicker.getMinute() - calNow.get(Calendar.MINUTE);
 
-
                 calSet.add(Calendar.HOUR_OF_DAY, hoursDiff);
                 calSet.add(Calendar.MINUTE, minuteDiff);
                 calSet.add(Calendar.SECOND, -calSet.get(Calendar.SECOND));

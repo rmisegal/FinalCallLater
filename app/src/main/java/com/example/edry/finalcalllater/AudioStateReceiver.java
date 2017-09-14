@@ -30,8 +30,9 @@ public class AudioStateReceiver extends BroadcastReceiver {
 
             case AudioManager.RINGER_MODE_NORMAL:
 
-                if (isMyServiceRunning(SleepModeService.class, context) && audioManager.getStreamVolume(AudioManager.STREAM_RING) >= 1) {
-                    StopSleeperWindow Slper = new StopSleeperWindow(context, LastRingerMode);
+                if (isMyServiceRunning(SleepModeService.class, context) && audioManager.getStreamVolume(AudioManager.STREAM_RING) == 1) {
+                    if(LastRingerMode != AudioManager.RINGER_MODE_NORMAL)
+                        new StopSleeperWindow(context, LastRingerMode);
                 }
 
                 break;
