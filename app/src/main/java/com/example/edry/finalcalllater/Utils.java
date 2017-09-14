@@ -32,8 +32,8 @@ public class Utils {
         long diffHours = timeDiff / (60 * 60 * 1000) % 24;
 
         if(diffHours > 0)
-            return String.format("%02d:%02d:%02d", diffHours, diffMinutes, diffSeconds);
+            return String.format("%02d hours, %02d minutes, %02d seconds", diffHours, diffMinutes, diffSeconds);
         else
-            return String.format("%02d:%02d", diffMinutes, diffSeconds);
+            return String.format("%02d minutes, %02d seconds", diffMinutes, diffSeconds);
     }
 }
